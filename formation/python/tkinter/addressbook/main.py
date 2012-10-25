@@ -5,13 +5,13 @@ import controller
 def main():
 
     #create model instance
-    model = model.AddressBook()
+    mymodel = model.AddressBook()
 
     #create the view instance
-    root, view = view.init()
+    root, myview = view.init()
 
     #create the controller instance
-    controller = controller.Controller(model, view)
+    mycontroller = controller.Controller(mymodel, myview)
 
     #launch !
     root.mainloop()
