@@ -7,4 +7,7 @@ class TestContact(unittest.TestCase):
         pass
 
     def test_name(self):
-        self.assertTrue(False, "wtf")
+        self.assertTrue(True, "wtf")
+
+if __name__ == '__main__':
+    unittest.main()

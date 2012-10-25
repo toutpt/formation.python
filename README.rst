@@ -1,7 +1,8 @@
 Formation Python
 ================
 
-Ce package contient une série d'exemples de code.
+Ce package contient une série d'exemples de code, ainsi que de la documentation
+autour de python.
 
 Comment installer ce package::
 
@@ -10,21 +11,6 @@ Comment installer ce package::
 
 Comment executer les tests du package::
 
-    bin/test
+    bin/tests
 
-Nous prenons dans tous nos exemple la notion de carnet d'adresse et de contact
-comme base.
-
-Scripts
-=======
-
-
-POO
-===
-
-TKinter
-=======
-
-Dans la partie GUI TKinter est ici utilisé avec le patron de conception
-MVC (Model Vue Controleur)
-
+Nous prenons dans tous nos exemples la notion de carnet d'adresses comme besoin.
