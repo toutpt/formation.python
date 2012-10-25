@@ -9,7 +9,6 @@ class Controller(object):
         #lets bind quit on quit
         self.view.buttons['quit']['command'] = self.quit
         self.view.buttons['add']['command'] = self.add
-        import pdb;pdb.set_trace()
         #we need to load contact in the view
 
     def quit(self):
