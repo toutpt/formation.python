@@ -1,4 +1,3 @@
-import tkontact_model
 
 class Controller(object):
     def __init__(self, model, view):
@@ -19,6 +18,6 @@ class Controller(object):
     def add(self):
         #get arg
         info = self.view.get_contact_info()
-        contact = tkontact_model.Contact(info['lastname'], info['firstname'])
+        contact = self.model.create_contact(info['lastname'], info['firstname'])
         contact.phone = info['phone']
         self.model.add_contact(contact)

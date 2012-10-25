@@ -17,18 +17,27 @@ class AddressBook(object):
         self.contacts = {}
 
     def add_contact(self, contact):
+        """Add a contact to the address book."""
         self.contacts[contact.id] = contact
         print "contact added: %s"% contact.toString()
     
     def del_contact(self, contactid):
+        """delete a contact from a given contact id"""
         del self.contacts[contactid]
 
     def search(self, term):
+        """Search a contact from term 'term'
+        -> [contact1, contact2, ...]
+        """
         contacts = []
         for contact in self.contacts:
             if term in contact.lastname or term in contact.firstname:
                 contacts.append(contact)
         return contacts
+
+    def create_contact(self, lastname, firstname):
+        """-> instance Contact"""
+        return Contact(lastname, firstname)
 
 if __name__ == '__main__':
     c1 = Contact('FRANCOIS', 'JeanMichel')
