@@ -12,7 +12,7 @@ class Controller(object):
         #we need to load contact in the view
 
     def quit(self):
-        self.view.quit
+        self.view.quit()
 
     def add(self):
         #get arg
