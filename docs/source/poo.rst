@@ -31,5 +31,34 @@ Les phases d'un développement d'une application:
 Application carnet d'adresses
 -----------------------------
 
-Modélisation: Une classe Contact se définit avec les attributs 'nom', 'prénom'
-et 'numéro de téléphone'
+Dans le cadre de la réalisation d'une application nous devons donc ici modéliser
+les éléments qui seront manipulé dans notre application.
+
+Un Contact, c'est avant tout un nom et un prénom.
+Une classe Contact se définit donc avec les attributs 'nom' et 'prénom'.
+Mais nous aurons besoin également de pouvoir ajouter plusieurs 'numéro de téléphone'
+
+::
+
+    class Contact(object):
+        """Documentation du contact"""
+        def __init__(self, nom, prenom):
+            self.nom = nom
+            self.prenom = prenom
+            self.tel = []
+
+Ici nous avons créé la classe 'Contact' qui nécessite pour sa construction
+un nom et un prénom. la valeur du téléphone devra être précisée après
+la construction.
+
+Quelques phrases qui se disent entre développeurs:
+
+* '__init__' est le constructeur de la classe Contact
+* le 'nom' self.nom est un attribut de la classe Contact
+
+Il est donc maintenant possible de manipuler notre contact::
+
+    >>> c1 = Contact("François", "Jean-Michel")
+    >>> c1.tel.append("00 00 00 00 00")
+    >>> print c1.nom
+    "François"

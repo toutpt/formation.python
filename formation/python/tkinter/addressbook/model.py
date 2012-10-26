@@ -1,3 +1,4 @@
+import os
 import uuid
 
 class Contact(object):
@@ -13,8 +14,11 @@ class Contact(object):
 
 class AddressBook(object):
 
-    def __init__(self):
+    def __init__(self, filename=None):
         self.contacts = {}
+        self.filename = filename
+        if not self.filename:
+            self.filename = "carnet.txt"
 
     def add_contact(self, contact):
         """Add a contact to the address book."""
@@ -30,8 +34,9 @@ class AddressBook(object):
         -> [contact1, contact2, ...]
         """
         contacts = []
-        for contact in self.contacts:
-            if term in contact.lastname or term in contact.firstname:
+        for contact in self.contacts.values():
+            if term.lower() in contact.lastname.lower() \
+            or term.lower() in contact.firstname.lower():
                 contacts.append(contact)
         return contacts
 
@@ -41,6 +46,40 @@ class AddressBook(object):
 
     def get_contacts(self):
         return self.contacts.values()
+
+    def get_file(self):
+        exists = os.path.exists(self.filename)
+        if exists and not os.path.isfile(self.filename):
+            raise ValueError('the argument filename must be a file')
+        if exists:
+            mode = "rw+"
+        else:
+            mode = "w+"
+        return open(self.filename, mode)
+
+    def read(self):
+        f = self.get_file()
+        for line in f:
+            tokens = line.split(';')
+            if len(tokens) >= 4:
+                contact = self.create_contact(tokens[1], tokens[2])
+                contact.id = tokens[0]
+            if len(tokens) == 5:
+                contact.phone = tokens[3]
+            self.add_contact(contact)
+        f.close()
+
+    def write(self):
+        f = file(self.filename, 'w+')
+        contents = ""
+        for contact in self.contacts.values():
+            contents += "%s;%s;%s;%s%s" % (contact.id,
+                                           contact.lastname,
+                                           contact.firstname,
+                                           contact.phone or "",
+                                           os.linesep)
+        f.write(contents.encode('utf-8'))
+        f.close()
 
 if __name__ == '__main__':
     c1 = Contact('FRANCOIS', 'JeanMichel')

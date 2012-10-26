@@ -5,9 +5,7 @@ import controller
 def main():
 
     #create model instance
-    mymodel = model.AddressBook()
-    c1 = model.Contact("FRANCOIS", "JeanMichel")
-    mymodel.add_contact(c1)
+    mymodel = model.AddressBook(filename='carnet_2.txt')
     #create the view instance
     root, myview = view.init()
 
