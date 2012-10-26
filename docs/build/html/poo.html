@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Programmation Orienté Objet &mdash; formation python 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="formation python 0.1 documentation" href="index.html" />
+    <link rel="next" title="Packaging" href="packaging.html" />
+    <link rel="prev" title="Debugger son code" href="debug.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="packaging.html" title="Packaging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="debug.html" title="Debugger son code"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">formation python 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="programmation-oriente-objet">
+<h1>Programmation Orienté Objet<a class="headerlink" href="#programmation-oriente-objet" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="vocabulaire">
+<h2>Vocabulaire<a class="headerlink" href="#vocabulaire" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>classe</li>
+<li>attribut</li>
+<li>méthode</li>
+<li>comportement</li>
+<li>responsabilité</li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>L&#8217;objet a été créé dans le but d&#8217;aider les développeurs à organiser leur code,
+à le réutiliser, à pouvoir étendre les possibilités sans tout re-écrire.</p>
+<p>Le principe d&#8217;un développement orienté objet est de modéliser l&#8217;environnement
+manipulé par l&#8217;application (&#8220;un carnet d&#8217;adresse contient des contacts&#8221;).</p>
+<p>Les phases d&#8217;un développement d&#8217;une application:</p>
+<ul class="simple">
+<li>Modélisation</li>
+<li>Prototypage</li>
+<li>Tests</li>
+<li>Implémentation</li>
+<li>Itération sur les deux précédentes -&gt; Livraison</li>
+<li>Recette (validation de l&#8217;application)</li>
+</ul>
+</div>
+<div class="section" id="application-carnet-d-adresses">
+<h2>Application carnet d&#8217;adresses<a class="headerlink" href="#application-carnet-d-adresses" title="Permalink to this headline">¶</a></h2>
+<p>Dans le cadre de la réalisation d&#8217;une application nous devons donc ici modéliser
+les éléments qui seront manipulé dans notre application.</p>
+<p>Un Contact, c&#8217;est avant tout un nom et un prénom.
+Une classe Contact se définit donc avec les attributs &#8216;nom&#8217; et &#8216;prénom&#8217;.
+Mais nous aurons besoin également de pouvoir ajouter plusieurs &#8216;numéro de téléphone&#8217;</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Contact</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Documentation du contact&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prenom</span> <span class="o">=</span> <span class="n">prenom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tel</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>Ici nous avons créé la classe &#8216;Contact&#8217; qui nécessite pour sa construction
+un nom et un prénom. la valeur du téléphone devra être précisée après
+la construction.</p>
+<p>Quelques phrases qui se disent entre développeurs:</p>
+<ul class="simple">
+<li>&#8216;__init__&#8217; est le constructeur de la classe Contact</li>
+<li>le &#8216;nom&#8217; self.nom est un attribut de la classe Contact</li>
+</ul>
+<p>Il est donc maintenant possible de manipuler notre contact:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="n">Contact</span><span class="p">(</span><span class="s">&quot;François&quot;</span><span class="p">,</span> <span class="s">&quot;Jean-Michel&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span><span class="o">.</span><span class="n">tel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;00 00 00 00 00&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">c1</span><span class="o">.</span><span class="n">nom</span>
+<span class="go">&quot;François&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Programmation Orienté Objet</a><ul>
+<li><a class="reference internal" href="#vocabulaire">Vocabulaire</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#application-carnet-d-adresses">Application carnet d&#8217;adresses</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="debug.html"
+                        title="previous chapter">Debugger son code</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="packaging.html"
+                        title="next chapter">Packaging</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/poo.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="packaging.html" title="Packaging"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="debug.html" title="Debugger son code"
+             >previous</a> |</li>
+        <li><a href="index.html">formation python 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, JeanMichel FRANCOIS.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
