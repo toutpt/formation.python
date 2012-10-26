@@ -10,6 +10,7 @@ class TKontactFrame(Frame):
         self.next_row = 0
         self.fields = {}
         self.buttons = {}
+        self.contacts_box = None
         self.initUI()
 
     def initUI(self):
@@ -53,8 +54,8 @@ class TKontactFrame(Frame):
         self.next_row+=1
 
     def add_contactlist(self):
-        text = Listbox(self.frame_left)
-        text.grid(row=0, column=0, sticky=E+W+S+N)
+        self.contacts_box = Listbox(self.frame_left)
+        self.contacts_box.grid(row=0, column=0, sticky=E+W+S+N)
 
     def get_contact_info(self):
         info = {'lastname': None,
@@ -63,6 +64,10 @@ class TKontactFrame(Frame):
         for key in info:
             info[key] = self.fields[key]['entry'].get()
         return info
+
+    def add_contacts(self, list_contacts_str):
+        for contact in list_contacts_str:
+            self.contacts_box.insert(END, contact)
 
 def init():
     root = Tk()

@@ -92,7 +92,9 @@ Dans l'execution::
 Plus d'information sur la documentation suivante:
 http://plone.fr/documentation/documentation-integrateur/presentation_buildout.html
 
-.. _PasteScript: http://pythonpaste.org/script/
+.. _PasteScript: http://pythonpaste.org/script
 .. _distutils: http://docs.python.org/distutils/index.html
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _distribute: http://packages.python.org/distribute/setuptools.html
+.. _virtualenv: http://www.virtualenv.org
+.. _zc.buildout: http://buildout.org

@@ -6,7 +6,8 @@ def main():
 
     #create model instance
     mymodel = model.AddressBook()
-
+    c1 = model.Contact("FRANCOIS", "JeanMichel")
+    mymodel.add_contact(c1)
     #create the view instance
     root, myview = view.init()
 

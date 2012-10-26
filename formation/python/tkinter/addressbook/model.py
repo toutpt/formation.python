@@ -39,6 +39,9 @@ class AddressBook(object):
         """-> instance Contact"""
         return Contact(lastname, firstname)
 
+    def get_contacts(self):
+        return self.contacts.values()
+
 if __name__ == '__main__':
     c1 = Contact('FRANCOIS', 'JeanMichel')
     c2 = Contact('RICHARD', 'Johan')

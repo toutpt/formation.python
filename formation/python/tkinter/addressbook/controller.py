@@ -4,6 +4,7 @@ class Controller(object):
         self.model = model
         self.view = view
         self.bind()
+        self.load_model_data()
 
     def bind(self):
         #lets bind quit on quit
@@ -20,3 +21,11 @@ class Controller(object):
         contact = self.model.create_contact(info['lastname'], info['firstname'])
         contact.phone = info['phone']
         self.model.add_contact(contact)
+
+    def load_model_data(self):
+        contacts = []
+
+        for contact in self.model.get_contacts():
+            contacts.append(contact.toString())
+
+        self.view.add_contacts(contacts)
